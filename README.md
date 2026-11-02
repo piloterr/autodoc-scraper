@@ -72,7 +72,7 @@ response = requests.get(
     params={
         "query": "https://www.auto-doc.fr/ridex/7999541",
     },
-    timeout=60,
+    timeout=120,
 )
 response.raise_for_status()
 data = response.json()
@@ -339,7 +339,7 @@ response = requests.get(
         "maker_name": "RENAULT",
         "product_id": "7999541",
     },
-    timeout=60,
+    timeout=120,
 )
 response.raise_for_status()
 data = response.json()
@@ -474,7 +474,7 @@ response = requests.get(
     params={
         "query": "https://www.auto-doc.fr/search?keyword=frein",
     },
-    timeout=60,
+    timeout=120,
 )
 response.raise_for_status()
 data = response.json()

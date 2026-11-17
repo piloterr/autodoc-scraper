@@ -496,7 +496,7 @@ type AutodocSearch = {
     "360_photo"?: string;
     reference?: string;
     seller_id?: number;
-    product_id?: string;
+    product_id?: number;
     product_url?: string;
     availability?: string;
     generic_name?: string;
@@ -505,10 +505,11 @@ type AutodocSearch = {
     original_price?: number;
   }[];
   pagination?: {
-    next?: number;
-    current?: number;
-    other_pages?: number[];
-    has_next_page?: boolean;
+    next?: string;
+    page?: number;
+    per_page?: number;
+    total_pages?: number;
+    total_results?: unknown;
   };
 };
 
@@ -554,7 +555,7 @@ Example response from the API reference, abridged — real values depend on the 
       "360_photo": "https://media.autodoc.de/360_photos/8381120",
       "reference": "78B0410",
       "seller_id": 485,
-      "product_id": "8381120",
+      "product_id": 8381120,
       "product_url": "https://www.auto-doc.fr/ridex/8381120",
       "availability": "En stock",
       "generic_name": "Étrier de frein",
@@ -571,7 +572,7 @@ Example response from the API reference, abridged — real values depend on the 
       "360_photo": "https://media.autodoc.de/360_photos/8099284",
       "reference": "78B0328",
       "seller_id": 485,
-      "product_id": "8099284",
+      "product_id": 8099284,
       "product_url": "https://www.auto-doc.fr/ridex/8099284",
       "availability": "En stock",
       "generic_name": "Étrier de frein",
@@ -581,13 +582,11 @@ Example response from the API reference, abridged — real values depend on the 
     }
   ],
   "pagination": {
-    "next": 2,
-    "current": 1,
-    "other_pages": [
-      2,
-      3
-    ],
-    "has_next_page": true
+    "next": "https://www.auto-doc.fr/search?keyword=frein&page=2",
+    "page": 1,
+    "per_page": 4,
+    "total_pages": 5,
+    "total_results": null
   }
 }
 ```
@@ -605,7 +604,7 @@ Example response from the API reference, abridged — real values depend on the 
 | `results[].360_photo` | string |  |
 | `results[].reference` | string |  |
 | `results[].seller_id` | integer |  |
-| `results[].product_id` | string |  |
+| `results[].product_id` | integer |  |
 | `results[].product_url` | string |  |
 | `results[].availability` | string |  |
 | `results[].generic_name` | string |  |
@@ -613,10 +612,11 @@ Example response from the API reference, abridged — real values depend on the 
 | `results[].reviews_count` | integer |  |
 | `results[].original_price` | number |  |
 | `pagination` | object |  |
-| `pagination.next` | integer |  |
-| `pagination.current` | integer |  |
-| `pagination.other_pages` | integer[] |  |
-| `pagination.has_next_page` | boolean |  |
+| `pagination.next` | string |  |
+| `pagination.page` | integer |  |
+| `pagination.per_page` | integer |  |
+| `pagination.total_pages` | integer |  |
+| `pagination.total_results` | object |  |
 
 ## Code examples in other languages
 
@@ -692,12 +692,12 @@ Use Piloterr from your own language with a typed client:
 
 ## Related scrapers
 
+- [Jobs Scraper API](https://github.com/piloterr/jobs-scraper)
 - [About You Scraper API](https://github.com/piloterr/aboutyou-scraper)
 - [Action Scraper API](https://github.com/piloterr/action-scraper)
 - [Aldi Scraper API](https://github.com/piloterr/aldi-scraper)
 - [Alibaba Scraper API](https://github.com/piloterr/alibaba-scraper)
 - [AliExpress Scraper API](https://github.com/piloterr/aliexpress-scraper)
-- [Allegro Scraper API](https://github.com/piloterr/allegro-scraper)
 - [All Piloterr scrapers on GitHub](https://github.com/piloterr)
 
 ## Support
